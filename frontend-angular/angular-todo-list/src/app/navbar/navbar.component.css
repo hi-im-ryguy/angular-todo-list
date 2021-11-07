@@ -1,0 +1,10 @@
+.navbar {
+  height: 6rem;
+  background-color: aliceblue;
+}
+
+.nav-center {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}

@@ -1,1 +1,35 @@
-<p>servers works!</p>
+<div class="servers">
+  <div class="servers-header">
+    <h1 style="text-decoration: underline;">SERVERS</h1>
+  </div>
+  <div style="text-align: center;">
+    <label>Server Name</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="newServerName">
+    <button 
+      class="btn btn-primary"
+      [disabled]="!newServerName"
+      (click)="onCreateNewServer()">
+      Add {{ newServerName }}
+    </button>
+    <button 
+      class="btn btn-primary"
+      (click)="toggleDisplayDetails()">
+      Display Details
+    </button>
+    <p *ngIf="displayDetails">Secret Password = tuna</p>
+    <p
+      *ngFor="let displayDetailsLog of displayDetailsLog; let index = index"
+      [ngClass]="{
+        'servers-detail--after5': displayDetailsLog.id >= 5
+      }"
+      >{{ toReadableDate(displayDetailsLog) }}</p>
+    <ul id="servers-list" class="servers-list">
+      <h3 *ngIf="servers.length > 0; else noServer">{{ serverCreationStatus }}</h3>
+      <ng-template #noServer><h3>No Server Has Been Created!</h3></ng-template>
+      <app-server *ngFor="let server of servers"></app-server>
+    </ul>
+  </div>
+</div>

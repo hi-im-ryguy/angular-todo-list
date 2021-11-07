@@ -1,0 +1,11 @@
+.servers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.servers-detail--after5 {
+  background-color: blue;
+  color: white;
+}

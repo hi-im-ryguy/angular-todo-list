@@ -1,0 +1,7 @@
+.server--online {
+  background-color: green;
+}
+
+.server--offline {
+  background-color: red;
+}

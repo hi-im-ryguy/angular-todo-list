@@ -1,0 +1,9 @@
+<h1
+  [ngStyle]="{'background-color': getColor()}"
+  [ngClass]="{
+    'server--offline': isOnline == false,
+    'server--online': isOnline == true
+  }"
+  >
+  Server {{ id }} is {{ getServerStatus() }}
+</h1>
