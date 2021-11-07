@@ -25,7 +25,7 @@
       [ngClass]="{
         'servers-detail--after5': displayDetailsLog.id >= 5
       }"
-      >{{ toReadableDate(displayDetailsLog) }}</p>
+      >{{ displayDetailsLog.timeStamp }}</p>
     <ul id="servers-list" class="servers-list">
       <h3 *ngIf="servers.length > 0; else noServer">{{ serverCreationStatus }}</h3>
       <ng-template #noServer><h3>No Server Has Been Created!</h3></ng-template>

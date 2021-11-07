@@ -16,7 +16,7 @@ export class ServersComponent implements OnInit {
   ];
   displayDetails = false;
   displayDetailsLogId = 1;
-  displayDetailsLog: any[] = [];
+  displayDetailsLog: Array<any> = [];
 
   constructor() {
   }
@@ -42,9 +42,6 @@ export class ServersComponent implements OnInit {
   logDisplayDetails() {
     this.displayDetailsLog.push({ "id": this.displayDetailsLogId, "timeStamp": new Date() });
     this.displayDetailsLogId++;
-  }
-
-  toReadableDate(date: any) {
-    return date.timeStamp;
+    console.log(this.displayDetailsLog);
   }
 }
