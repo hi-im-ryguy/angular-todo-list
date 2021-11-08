@@ -7,12 +7,12 @@
       class="to-do-list-card"
       *ngFor="let card of toDoList"
     >
-      <app-to-do-list-item
+      <to-do-list-item
         (click) = "openDialog();"
-      ></app-to-do-list-item>
+      ></to-do-list-item>
     </div>
     <div class="to-do-list-card">
-      <app-to-do-list-add-button (click)="onAddToDoItem()"></app-to-do-list-add-button>
+      <to-do-list-add-button (click)="onAddToDoItem()"></to-do-list-add-button>
     </div>
   </section>
 </main>

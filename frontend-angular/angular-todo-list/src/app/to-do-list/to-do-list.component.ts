@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { ToDoListItemConfigurationMenuComponent } from './to-do-list-item-configuration-menu/to-do-list-item-configuration-menu.component'
+import { ToDoListItemConfigurationMenuComponent } from './item-configuration-menu/item-configuration-menu.component'
 
 export interface DialogData {
   animal: string;
@@ -20,11 +20,6 @@ export class ToDoListComponent implements OnInit {
     {
       "id": 1,
       "task": "Clean butt.",
-      "dueDate": Date.now()
-    },
-    {
-      "id": 2,
-      "task": "Poop.",
       "dueDate": Date.now()
     }
   ];
