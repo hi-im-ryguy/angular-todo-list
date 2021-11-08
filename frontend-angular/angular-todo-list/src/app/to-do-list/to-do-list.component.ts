@@ -16,7 +16,7 @@ export class ToDoListComponent implements OnInit {
       "id": 2,
       "task": "Poop.",
       "dueDate": Date.now()
-    },
+    }
   ];
 
   constructor() { }
@@ -24,4 +24,13 @@ export class ToDoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onAddToDoItem() {
+    this.toDoList.push(
+      {
+        "id": 1,
+        "task": "Clean butt.",
+        "dueDate": Date.now()
+      }
+    );
+  }
 }

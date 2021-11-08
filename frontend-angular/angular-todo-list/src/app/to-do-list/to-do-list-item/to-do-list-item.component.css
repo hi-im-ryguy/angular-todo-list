@@ -1,0 +1,16 @@
+.to-do-list-item-card {
+  height: calc(100% - 2rem);
+}
+
+.to-do-list-item-card:hover {
+  cursor: pointer;
+  background-color: #EEEEEE;
+}
+
+.mat-card {
+  overflow: hidden;
+}
+
+.mat-card-content {
+  font-size: 18pt;
+}

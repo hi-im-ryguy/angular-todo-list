@@ -8,23 +8,27 @@
 }
 
 .to-do-list-card {
-  background-color: lightpink;
   margin: 10px;
+  min-width: 0; /* allows card to shrink even more than it can */
 }
 
-@media only screen and (min-width: 768px) {
+.to-do-list-card > * {
+
+}
+
+@media only screen and (min-width: 960px) {
   .to-do-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 10rem;
+    grid-auto-rows: 20rem;
   }
 }
 
-@media only screen and (min-width:576px) and (max-width: 768px) {
+@media only screen and (min-width:576px) and (max-width: 960px) {
   .to-do-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 10rem;
+    grid-auto-rows: 20rem;
   }
 }
 
@@ -32,6 +36,6 @@
   .to-do-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 10rem;
+    grid-auto-rows: 20rem;
   }
 }

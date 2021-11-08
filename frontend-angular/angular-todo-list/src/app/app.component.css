@@ -7,17 +7,20 @@ main {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 100vh;
 }
 
 .navbar {
   height: 6rem;
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
 }
 
 .page-content {
   display: flex;
   justify-content: center;
-  height: calc(100vh - 12rem);
+  min-height: 100vh;
+  padding-bottom: 6rem;
 }
 
 .page-content-section {
@@ -26,7 +29,7 @@ main {
 }
 
 .footer {
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
   position: absolute;
   height: 6rem;
   bottom: 0;
