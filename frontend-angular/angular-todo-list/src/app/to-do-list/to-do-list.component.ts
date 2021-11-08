@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { ToDoListItemConfigurationMenuComponent } from './to-do-list-item-configuration-menu/to-do-list-item-configuration-menu.component'
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -43,8 +45,8 @@ export class ToDoListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ToDoListComponent, {
-      width: '250px',
+    const dialogRef = this.dialog.open(ToDoListItemConfigurationMenuComponent, {
+      width: '55rem',
       data: {name: this.name, animal: this.animal},
     });
 
