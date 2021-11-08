@@ -1,0 +1,13 @@
+<main class="to-do-list-content">
+  <section class="to-do-list">
+    <div
+      class="to-do-list-card"
+      *ngFor="let card of toDoList"
+    >
+      <app-to-do-list-item></app-to-do-list-item>
+    </div>
+    <div class="to-do-list-card">
+      <app-to-do-list-add-button></app-to-do-list-add-button>
+    </div>
+  </section>
+</main>
