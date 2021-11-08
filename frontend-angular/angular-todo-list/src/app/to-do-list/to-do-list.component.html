@@ -1,10 +1,15 @@
 <main class="to-do-list-content">
+  <section class="to-do-list-header">
+    <h1>Guest's To Do List</h1>
+  </section>
   <section class="to-do-list">
     <div
       class="to-do-list-card"
       *ngFor="let card of toDoList"
     >
-      <app-to-do-list-item></app-to-do-list-item>
+      <app-to-do-list-item
+        (click) = "openDialog();"
+      ></app-to-do-list-item>
     </div>
     <div class="to-do-list-card">
       <app-to-do-list-add-button (click)="onAddToDoItem()"></app-to-do-list-add-button>

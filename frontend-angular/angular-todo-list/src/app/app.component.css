@@ -12,8 +12,30 @@ main {
 }
 
 .navbar {
+  display: flex;
+  justify-content: center;
+  height: 6rem;
+  width: 100%;
+  background-color: #EEEEEE;
+}
+
+.navbar-links {
+  max-width: 80rem;
+  min-width: 10rem;
+  width: 55vw;
+}
+
+.navbar--right {
+  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   height: 6rem;
   background-color: #EEEEEE;
+}
+
+.navbar--right > ul {
+  list-style-type: none;
 }
 
 .page-content {
