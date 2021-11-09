@@ -1,7 +1,14 @@
 <mat-card class="to-do-list-item-card">
   <mat-card-content class="content"
   (click)="openDialog()">
-    {{ toDo.task }}
+    <textarea
+      class="to-do-list-item-content"
+      matInput
+      type="text"
+      readonly
+      [value]="toDo.task"
+      >
+    </textarea>
   </mat-card-content>
   <hr>
   <mat-card-content

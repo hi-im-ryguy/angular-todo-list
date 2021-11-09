@@ -1,0 +1,27 @@
+.item-dialog {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr 1fr;
+}
+
+.item-dialog > section {
+  width: 100%;
+}
+
+.item-dialog-section--main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-dialog-section--main > textarea {
+  font-size: 18pt;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: auto;
+}

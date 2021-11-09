@@ -27,7 +27,9 @@ export class ToDoListItemComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ToDoListItemConfigurationMenuComponent, {
       data: this.toDo,
-      width: '30rem'
+      width: '25rem',
+      height: '60vh',
+      maxHeight: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -3,10 +3,17 @@
   padding: 0;
   grid-template-rows: 3fr 1px 1fr;
   height: 100%;
+  overflow: hidden;
 }
 
-.mat-card {
-  overflow: hidden;
+.to-do-list-item-content {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  font-size: 16pt;
 }
 
 .mat-card > hr {
@@ -17,15 +24,25 @@
 .content {
   grid-row-start: 1;
   grid-row-end: 2;
-  font-size: 14pt;
   margin: 0;
   padding: 1.2rem;
 }
 
-.content:hover {
+.content:hover, .to-do-list-item-content:hover  {
   cursor: pointer;
   background-color: #DDDDDD;
 }
+
+.content:hover .to-do-list-item-content  {
+  cursor: pointer;
+  background-color: #DDDDDD;
+}
+
+.to-do-list-item-content:hover .content {
+  cursor: pointer;
+  background-color: #DDDDDD;
+}
+
 
 .footer {
   grid-row-start: 3;

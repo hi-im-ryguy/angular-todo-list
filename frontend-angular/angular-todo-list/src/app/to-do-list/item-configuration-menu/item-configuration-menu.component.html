@@ -3,20 +3,30 @@
   [value]="this.passedData.task"
   (change)="newMessage()"
 /> -->
-<div>
-  <input
-    type="text"
-    [value]="this.passedData.task"
-    name="newTask"
-    #newTask
-  >
-  <input
-    type="checkbox"
-    [value]="this.passedData.isCompleted"
-    name="isCompleted"
-    #isCompleted
-  >
-  <p>ID: {{this.passedData.id}}</p>
-  <button mat-button
-    (click)="onSave(newTask.value, isCompleted.checked)">Save</button>
-</div>
+<main class="item-dialog">
+  <section class="item-dialog-section--main">
+    <p>ID: {{passedData.id}}</p>
+    <textarea
+      matInput
+      type="text"
+      [value]="passedData.task"
+      (keydown.enter)="onSave(newTask.value, isCompleted.checked)"
+      name="newTask"
+      #newTask
+      >
+    </textarea>
+  </section>
+  <section>
+    <mat-checkbox
+      type="checkbox"
+      [checked]="passedData.isCompleted"
+      name="isCompleted"
+      #isCompleted
+    ></mat-checkbox>
+    <button mat-button
+      type="button"
+      (click)="onSave(newTask.value, isCompleted.checked)"
+      #save
+      >Save</button>
+  </section>
+</main>

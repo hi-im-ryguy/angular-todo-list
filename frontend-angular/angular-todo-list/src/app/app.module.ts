@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -49,7 +50,8 @@ const routes: Routes = [
     MatCardModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     {
