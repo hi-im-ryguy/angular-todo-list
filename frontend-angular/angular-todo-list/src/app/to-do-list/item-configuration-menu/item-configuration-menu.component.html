@@ -1,1 +1,22 @@
-<p>Test</p>
+<!-- <input
+  type="text"
+  [value]="this.passedData.task"
+  (change)="newMessage()"
+/> -->
+<div>
+  <input
+    type="text"
+    [value]="this.passedData.task"
+    name="newTask"
+    #newTask
+  >
+  <input
+    type="checkbox"
+    [value]="this.passedData.isCompleted"
+    name="isCompleted"
+    #isCompleted
+  >
+  <p>ID: {{this.passedData.id}}</p>
+  <button mat-button
+    (click)="onSave(newTask.value, isCompleted.checked)">Save</button>
+</div>

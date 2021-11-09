@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +24,7 @@ import { ToDoListAddButtonComponent } from './to-do-list/add-button/add-button.c
 import { ToDoListItemComponent } from './to-do-list/item/item.component';
 import { ToDoListItemConfigurationMenuComponent } from './to-do-list/item-configuration-menu/item-configuration-menu.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ToDoListService } from './to-do-list/to-do-list.service';
 
 const routes: Routes = [
 ];
@@ -40,6 +42,7 @@ const routes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     MatBadgeModule,
     MatButtonModule,
@@ -53,7 +56,8 @@ const routes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    ToDoListService
   ],
   bootstrap: [AppComponent]
 })

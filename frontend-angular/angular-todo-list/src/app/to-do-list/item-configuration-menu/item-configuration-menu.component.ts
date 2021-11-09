@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToDoListService } from '../to-do-list.service';
+
+import { ToDo } from '../../../models/ToDo.model';
 
 @Component({
   // selector: 'to-do-list-item-configuration-menu',
@@ -6,15 +10,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class ToDoListItemConfigurationMenuComponent implements OnInit {
-  @Input() toDo!: { id: number; task: string; isCompleted: boolean; };
+  @Input() toDo!: ToDo;
 
-  constructor() {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public passedData: ToDo,
+    private dialogReference : MatDialogRef<ToDoListItemConfigurationMenuComponent>,
+    private toDoListService : ToDoListService
+  ) { }
+
+  ngOnInit() {
 
   }
 
-  ngOnInit() { }
-
-  onSave() {
-
+  onSave(newTask: string, newIsCompleted: boolean) {
+    let newToDo = new ToDo(this.passedData.id, newTask, newIsCompleted);
+    this.toDoListService.saveToDoById(newToDo);
+    this.dialogReference.close();
   }
 }

@@ -18,9 +18,10 @@ export class ToDoListItemComponent implements OnInit {
   @Input() toDo!: { id: number; task: string; isCompleted: boolean; };
   // That '!' means that for any instance of this item component, toDo cannot be null. This way, the compiler doesn't complain about the possibility that it will be null.
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   openDialog(): void {
@@ -33,6 +34,10 @@ export class ToDoListItemComponent implements OnInit {
       console.log('The dialog was closed');
       // this.task = result;
     });
+  }
+
+  updateItem(){
+
   }
 
   checkBox() {
