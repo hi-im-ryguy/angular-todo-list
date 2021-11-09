@@ -14,7 +14,8 @@ export class TokenInterceptor implements HttpInterceptor {
     
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer OTdOeet56BacQONhn2mDW5rILR2Ty5An1GSPg8h3`
+        Authorization: `Bearer OTdOeet56BacQONhn2mDW5rILR2Ty5An1GSPg8h3`,
+        "Access-Control-Allow-Origin": "*"
       }
     });
     return next.handle(request);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../auth/http.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -24,10 +25,18 @@ export class ToDoListComponent implements OnInit {
       isCompleted: false
     }
   ];
+  toDoCounter = 0;
 
-  constructor() {}
+  constructor(
+    private httpService: HttpService
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.httpService.sendGetRequest().subscribe((data: any) => {
+      console.log(data);
+    })
   }
 
   onAddToDoItem() {

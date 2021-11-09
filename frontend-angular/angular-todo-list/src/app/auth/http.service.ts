@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
 
-  private REST_API_SERVER_URL = "https://39fjkh53ck.execute-api.us-west-1.amazonaws.com/default/to-do-list-rest-api";
+  private REST_API_SERVER_URL = "https://wg82pwg8e9.execute-api.us-west-1.amazonaws.com/default/to-do-list-rest-api";
 
   constructor(private httpClient: HttpClient) { }
 
