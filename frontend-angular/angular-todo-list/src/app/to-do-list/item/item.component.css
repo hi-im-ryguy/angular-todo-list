@@ -1,16 +1,41 @@
 .to-do-list-item-card {
-  height: calc(100% - 2rem);
-}
-
-.to-do-list-item-card:hover {
-  cursor: pointer;
-  background-color: #EEEEEE;
+  display: grid;
+  padding: 0;
+  grid-template-rows: 3fr 1px 1fr;
+  height: 100%;
 }
 
 .mat-card {
   overflow: hidden;
 }
 
-.mat-card-content {
-  font-size: 18pt;
+.mat-card > hr {
+  margin: 0;
+  width: 100%;
+}
+
+.content {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 14pt;
+  margin: 0;
+  padding: 1.2rem;
+}
+
+.content:hover {
+  cursor: pointer;
+  background-color: #DDDDDD;
+}
+
+.footer {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer:hover {
+  cursor: pointer;
+  background-color: #DDDDDD;
 }

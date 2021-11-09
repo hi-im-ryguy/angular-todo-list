@@ -1,7 +1,9 @@
 .to-do-list-content {
-  background-color:skyblue;
+  background-color:#87ceeb;
   height: 100%;
-  width: 100%
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .to-do-list-header {
