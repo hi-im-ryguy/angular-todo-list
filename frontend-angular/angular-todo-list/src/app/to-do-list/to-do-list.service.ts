@@ -8,29 +8,18 @@ export class ToDoListService {
   toDoListCounter: number = 0;
 
   response = {
-    toDoList : [
-    new ToDo(1, 'poop', false),
-    new ToDo(2, 'Task', false),
-    new ToDo(3, 'Task', false),
-    new ToDo(4, 'Task', false),
-    new ToDo(5, 'Task', false)
-    ],
-    toDoListCounter : 6
+    toDoList : [],
+    toDoListCounter : 0
   }
   onAddNewToDo = new EventEmitter<ToDo>();
 
-  addNewToDo(id: number) {
-    this.toDoList.push(new ToDo(id, 'New Task', false));
-    this.toDoListCounter++;
+  addNewToDo() {
+    this.toDoList.push(new ToDo(this.toDoListCounter++, 'New Task', false));
   }
 
   loadToDoList() {
     this.toDoList = this.response.toDoList;
     this.toDoListCounter = this.response.toDoListCounter;
-  }
-
-  logResponse() {
-    console.log(this.response.toDoList[0].task);
   }
 
   saveToDoById(newToDo: ToDo) {

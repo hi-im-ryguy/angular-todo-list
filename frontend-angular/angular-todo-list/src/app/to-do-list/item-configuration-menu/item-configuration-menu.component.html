@@ -9,12 +9,14 @@
     <textarea
       matInput
       type="text"
+      [attr.maxlength]="MAX_LENGTH"
       [value]="passedData.task"
       (keydown.enter)="onSave(newTask.value, isCompleted.checked)"
       name="newTask"
       #newTask
       >
     </textarea>
+    <p>{{newTask.textLength}}/{{MAX_LENGTH}}</p>
   </section>
   <section>
     <mat-checkbox

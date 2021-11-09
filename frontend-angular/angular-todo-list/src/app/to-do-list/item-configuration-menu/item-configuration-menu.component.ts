@@ -14,6 +14,8 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
   @Input() toDo!: ToDo;
   @ViewChild('save') myDiv!: ElementRef;
 
+  MAX_LENGTH: number = 255;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public passedData: ToDo,
     private dialogReference : MatDialogRef<ToDoListItemConfigurationMenuComponent>,

@@ -31,6 +31,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   onAddToDoItem() {
-    this.toDoListService.addNewToDo(this.toDoCounter);
+    this.toDoListService.addNewToDo();
   }
 }
