@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -13,10 +13,10 @@ import { ToDoListItemConfigurationMenuComponent } from '../item-configuration-me
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
+  
 export class ToDoListItemComponent implements OnInit {
-  animal: string = "";
-  name: string = "";
-  task: string = "New Task"
+  @Input() toDo!: { id: number; task: string; isCompleted: boolean; };
+  // That '!' means that for any instance of this item component, toDo cannot be null. This way, the compiler doesn't complain about the possibility that it will be null.
 
   constructor(public dialog: MatDialog) { }
 
@@ -25,12 +25,13 @@ export class ToDoListItemComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ToDoListItemConfigurationMenuComponent, {
+      data: this.toDo,
       width: '30rem'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      // this.task = result;
     });
   }
 

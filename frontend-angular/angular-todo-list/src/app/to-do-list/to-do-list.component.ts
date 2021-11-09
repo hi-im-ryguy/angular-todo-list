@@ -6,11 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-do-list.component.css']
 })
 export class ToDoListComponent implements OnInit {
-  toDoList: Object[] = [
+  toDoList: any[] = [
     {
-      "id": 1,
-      "task": "Clean butt.",
-      "dueDate": Date.now()
+      id: NaN,
+      task: "New Task",
+      isCompleted: false,
+      dueDate: new Date()
+    },
+    {
+      id: NaN,
+      task: "Old Task",
+      isCompleted: false
+    },
+    {
+      id: NaN,
+      task: "New Task",
+      isCompleted: false
     }
   ];
 
@@ -22,9 +33,9 @@ export class ToDoListComponent implements OnInit {
   onAddToDoItem() {
     this.toDoList.push(
       {
-        "id": 1,
-        "task": "Clean butt.",
-        "dueDate": Date.now()
+        id: NaN,
+        task: "New Task",
+        isCompleted: false
       }
     );
   }

@@ -17,6 +17,7 @@ export class ServersComponent implements OnInit {
   displayDetails = false;
   displayDetailsLogId = 1;
   displayDetailsLog: Array<any> = [];
+  counter: number = 1;
 
   constructor() {
   }
@@ -29,7 +30,7 @@ export class ServersComponent implements OnInit {
     this.servers.push(this.newServerName);
     this.newServerName = "";
   }
-  
+
   onUpdateNewServerName(event: any) {
     this.newServerName = event.target.value;
   }
@@ -43,5 +44,9 @@ export class ServersComponent implements OnInit {
     this.displayDetailsLog.push({ "id": this.displayDetailsLogId, "timeStamp": new Date() });
     this.displayDetailsLogId++;
     console.log(this.displayDetailsLog);
+  }
+
+  incrementCounter() {
+    this.counter++;
   }
 }

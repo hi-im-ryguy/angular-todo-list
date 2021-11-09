@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   // selector: 'to-do-list-item-configuration-menu',
@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ToDoListItemConfigurationMenuComponent implements OnInit {
-  constructor() { }
+  @Input() toDo!: { id: number; task: string; isCompleted: boolean; };
+
+  constructor() {
+
+  }
 
   ngOnInit() { }
+
+  onSave() {
+
+  }
 }

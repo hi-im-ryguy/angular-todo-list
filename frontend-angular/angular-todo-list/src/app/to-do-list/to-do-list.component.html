@@ -6,8 +6,11 @@
     <div
       class="to-do-list-card"
       *ngFor="let card of toDoList"
-    >
-      <to-do-list-item></to-do-list-item>
+      >
+      <to-do-list-item
+        [toDo]="card"
+        >
+      </to-do-list-item>
     </div>
     <div class="to-do-list-card">
       <to-do-list-add-button (click)="onAddToDoItem()"></to-do-list-add-button>
