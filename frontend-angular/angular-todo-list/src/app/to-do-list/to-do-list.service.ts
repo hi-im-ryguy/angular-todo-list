@@ -26,5 +26,7 @@ export class ToDoListService {
     for (let i = 0; i < this.toDoList.length; i++) {
       if (this.toDoList[i].id == newToDo.id) this.toDoList[i] = newToDo;
     }
+
+    console.log('this.toDoList :>> ', this.toDoList);
   }
 }

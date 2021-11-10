@@ -11,9 +11,15 @@
     </textarea>
   </mat-card-content>
   <hr>
-  <label class="container" (click)="checkBox()">
+  <label class="container">
       <span id="text">Complete</span> 
-      <input type="checkbox" name="checkBox">
+      <input 
+      type="checkbox" 
+      name="checkBox" 
+      #checkBox 
+      (click) ="checkBoxClicked(checkBox.checked)"
+      [checked]="toDo.isCompleted"
+      >
       <span class="checkmark"></span>
   </label>
 </mat-card>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToDoListService } from '../to-do-list.service';
+import { ToDo } from '../../../models/ToDo.model';
 
 export interface DialogData {
   animal: string;
@@ -19,7 +21,8 @@ export class ToDoListItemComponent implements OnInit {
   // That '!' means that for any instance of this item component, toDo cannot be null. This way, the compiler doesn't complain about the possibility that it will be null.
 
   constructor(
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private toDoListService : ToDoListService) { }
 
   ngOnInit() {
   }
@@ -42,6 +45,8 @@ export class ToDoListItemComponent implements OnInit {
 
   }
 
-  checkBox() {
+  checkBoxClicked(newIsCompleted: boolean) {
+    let newToDo = new ToDo(this.toDo.id, this.toDo.task, newIsCompleted);
+    this.toDoListService.saveToDoById(newToDo);
   }
 }
