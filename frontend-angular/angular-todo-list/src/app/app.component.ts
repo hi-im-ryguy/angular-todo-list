@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AppComponent implements OnInit {
   title = 'angular-todo-list';
-  copyRightYear = new Date().getFullYear() + 1;
+  copyRightYear = new Date().getFullYear();
   userId: number = 0;
 
   constructor(

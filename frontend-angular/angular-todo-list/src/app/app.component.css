@@ -17,7 +17,7 @@ main {
   justify-content: center;
   height: 6rem;
   width: 100%;
-  background-color: #aca3ca;
+  background-color: #0D5FBB;
 }
 
 .navbar-links {
@@ -32,7 +32,7 @@ main {
   align-items: center;
   justify-content: flex-end;
   height: 6rem;
-  background-color: #aca3ca;
+  background-color: #0D5FBB;
   ;
 }
 

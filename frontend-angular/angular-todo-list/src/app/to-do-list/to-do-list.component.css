@@ -1,5 +1,5 @@
 .to-do-list-content {
-  background-color:#B6C8E0;
+  background-color:#4879B099;
   height: 100%;
   width: 100%;
   padding-left: 1rem;
@@ -19,16 +19,9 @@
   color: white;
 }
 
-.to-do-list > * {
-}
-
 .to-do-list-card {
   margin: 10px;
   min-width: 0; /* allows card to shrink even more than it can */
-}
-
-.to-do-list-card > * {
-
 }
 
 @media only screen and (min-width: 1300px) {
