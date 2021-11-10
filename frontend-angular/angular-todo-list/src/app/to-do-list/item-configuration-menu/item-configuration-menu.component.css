@@ -67,9 +67,9 @@
   background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a green background */
+/* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: green;
+  background-color: #3f51b5;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -100,4 +100,5 @@
 .button-container{
   display: flex;
   justify-content: space-between;
+  margin-top: 12px;
 }

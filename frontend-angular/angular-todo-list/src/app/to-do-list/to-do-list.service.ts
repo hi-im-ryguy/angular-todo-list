@@ -26,7 +26,6 @@ export class ToDoListService {
     for (let i = 0; i < this.toDoList.length; i++) {
       if (this.toDoList[i].id == newToDo.id) this.toDoList[i] = newToDo;
     }
-    console.log('this.toDoList after adding :>> ', this.toDoList);
   }
   
   deleteToDoById(deletedId: number) {
@@ -36,6 +35,5 @@ export class ToDoListService {
         this.toDoList.splice(i,1);
       }
     }
-    console.log('this.toDoList after deletion :>> ', this.toDoList);
   }
 }

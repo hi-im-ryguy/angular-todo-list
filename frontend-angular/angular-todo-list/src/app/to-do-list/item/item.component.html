@@ -19,7 +19,8 @@
       (click) ="checkBoxClicked(checkBox.checked)"
       [checked]="toDo.isCompleted"
       >
-      <span id="text">Complete</span> 
+      <span class="status" *ngIf="!checkBox.checked"></span>
+      <span class="status" *ngIf="checkBox.checked">Completed</span> 
       <span class="checkmark"></span>
   </label>
 </mat-card>

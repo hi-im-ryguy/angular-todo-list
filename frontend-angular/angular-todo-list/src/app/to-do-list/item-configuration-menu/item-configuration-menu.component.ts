@@ -33,7 +33,12 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
   }
 
   delete(iD: number) {
-    this.toDoListService.deleteToDoById(iD);
-    this.dialogReference.close();
+    if(confirm("Are you sure to delete this task?")) {
+      console.log("Implement delete functionality here");
+      this.toDoListService.deleteToDoById(iD);
+      this.dialogReference.close();
+    } else {
+      this.dialogReference.close();
+    }
   }
 }
