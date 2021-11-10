@@ -33,6 +33,8 @@
     <hr> 
     <div class="button-container">
       <button mat-raised-button
+        matTooltip="Pressing 'Enter' Saves Too!"
+        matTooltipPosition='right'
         color="primary"
         type="button"
         (click)="onSave(newTask.value, isCompleted.checked)"

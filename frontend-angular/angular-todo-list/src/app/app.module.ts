@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -54,7 +55,8 @@ const routes: Routes = [
     MatCheckboxModule,
     MatDialogModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ],
   providers: [
     // {
