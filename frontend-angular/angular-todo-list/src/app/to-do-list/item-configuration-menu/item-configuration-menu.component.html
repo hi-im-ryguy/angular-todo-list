@@ -5,7 +5,7 @@
 /> -->
 <main class="item-dialog">
   <section class="item-dialog-section--main">
-    <p>ID: {{passedData.id}}</p>
+    <p *ngIf="!environmentService.environment">ID: {{passedData.id}}</p>
     <textarea
       matInput
       type="text"

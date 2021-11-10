@@ -28,6 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpService  } from './auth/http.service';
 import { ToDoListService } from './to-do-list/to-do-list.service';
 import { AuthService } from './auth/auth.service';
+import { EnvironmentService } from 'src/environments/environment.service';
 
 const routes: Routes = [
 ];
@@ -63,7 +64,8 @@ const routes: Routes = [
     // },
     HttpService,
     ToDoListService,
-    AuthService
+    AuthService,
+    EnvironmentService
   ],
   bootstrap: [AppComponent]
 })

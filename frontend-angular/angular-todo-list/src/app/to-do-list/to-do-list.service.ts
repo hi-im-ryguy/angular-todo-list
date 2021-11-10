@@ -19,11 +19,17 @@ export class ToDoListService {
 
   onAddNewToDo = new EventEmitter<ToDo>();
 
-  addNewToDo(toDoCounter: number) {
-    this.httpService.addNewToDo(toDoCounter).subscribe((data) => {
-      console.log(data);
-    });
-    this.toDoList.push(new ToDo(this.toDoListCounter++, 'New Task', false));
+  addNewToDo() {
+    try {
+      this.httpService.addNewToDo().then((data) => {
+        this.toDoList.push(new ToDo(data, 'New Task', false));
+      }, (error) => {
+        alert("Request Failed.");
+      });
+    }
+    catch {
+      alert("Request Failed.");
+    }
   }
 
   loadToDoList(responseToDo: ToDo[], responseToDoCounter: number) {
@@ -31,11 +37,19 @@ export class ToDoListService {
     this.toDoListCounter = responseToDoCounter;
   }
 
-  saveToDoById(newToDo: ToDo) {
-    this.httpService.updateToDo(newToDo).subscribe();
-
-    for (let i = 0; i < this.toDoList.length; i++) {
-      if (this.toDoList[i].id == newToDo.id) this.toDoList[i] = newToDo;
-    }
+  async saveToDoById(newToDo: ToDo) {
+    let worked = false;
+    await this.httpService.updateToDo(newToDo).subscribe((data) => {
+      for (let i = 0; i < this.toDoList.length; i++) {
+        if (this.toDoList[i].id == newToDo.id) {
+          this.toDoList[i] = newToDo;
+          break;
+        }
+      }
+      worked = true
+    }, (error) => {
+      alert("Save request failed.");
+    });
+    return worked;
   }
 }

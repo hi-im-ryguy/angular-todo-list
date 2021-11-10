@@ -31,12 +31,15 @@ export class HttpService {
   )
   { }
 
-  public addNewToDo(toDoCounter: number) {
+  async addNewToDo() {
+    let response: any = await this.httpClient.get(this.REST_API_SERVER_URL + '/get-to-do-counter?id=' + this.authService.userId, httpHeaders).toPromise();
+    let toDoID = response.Items[0].to_do_counter;
     let requestBody = {
-      'to_do_counter': toDoCounter,
+      'to_do_counter': toDoID,
       'id': this.authService.userId
     }
-    return this.httpClient.put(this.REST_API_SERVER_URL + '/add-new-to-do', requestBody, httpHeaders);
+    this.httpClient.put(this.REST_API_SERVER_URL + '/add-new-to-do', requestBody, httpHeaders).subscribe();
+    return toDoID;
   }
 
   public sendGetRequest() {
