@@ -31,4 +31,9 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
     this.toDoListService.saveToDoById(newToDo);
     this.dialogReference.close();
   }
+
+  delete(iD: number) {
+    this.toDoListService.deleteToDoById(iD);
+    this.dialogReference.close();
+  }
 }

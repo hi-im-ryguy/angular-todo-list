@@ -58,12 +58,20 @@
 }
 
 /* Customize the label (the container) */
+.checkbox-container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+  align-items: center;
+  padding-left: 25%;
+  padding-right: 25%;
+}
 
 .container {
   display: -webkit-inline-flex;
   align-items: center;
   position: relative;
-  padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;

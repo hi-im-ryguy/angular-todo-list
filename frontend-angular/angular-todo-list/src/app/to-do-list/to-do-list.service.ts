@@ -26,7 +26,16 @@ export class ToDoListService {
     for (let i = 0; i < this.toDoList.length; i++) {
       if (this.toDoList[i].id == newToDo.id) this.toDoList[i] = newToDo;
     }
-
-    console.log('this.toDoList :>> ', this.toDoList);
+    console.log('this.toDoList after adding :>> ', this.toDoList);
+  }
+  
+  deleteToDoById(deletedId: number) {
+    for (let i = 0; i < this.toDoList.length; i++) {
+      if (this.toDoList[i].id == deletedId)
+      {
+        this.toDoList.splice(i,1);
+      }
+    }
+    console.log('this.toDoList after deletion :>> ', this.toDoList);
   }
 }

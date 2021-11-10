@@ -30,14 +30,20 @@
         <input type="checkbox" [checked]="passedData.isCompleted" name="isCompleted" #isCompleted>
         <span class="checkmark"></span>
     </label>
-    <hr>
-    <div class="button-cotainer">
+    <hr> 
+    <div class="button-container">
       <button mat-raised-button
         color="primary"
         type="button"
         (click)="onSave(newTask.value, isCompleted.checked)"
         #save
         >Save</button>
+      <button mat-raised-button
+        color="warn"
+        type="button"
+        (click)="delete(this.passedData.id)"
+        #save
+        >Delete task</button>
     </div>
   </section>
 </main>
