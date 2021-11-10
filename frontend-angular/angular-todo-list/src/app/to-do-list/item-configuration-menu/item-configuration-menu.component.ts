@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToDoListService } from '../to-do-list.service';
+import Swal from 'sweetalert2';
 
 import { ToDo } from '../../../models/ToDo.model';
 import { EnvironmentService } from 'src/environments/environment.service';
@@ -34,6 +35,22 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
     this.toDoListService.saveToDoById(newToDo).then((response) => {
       if (!response) this.dialogReference.close();
       else alert("Didn't save. Please try again.");
+    })
+  }
+
+  delete(iD: number) {
+    Swal.fire({
+      title: 'Delete this task?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#f44336',
+      cancelButtonColor: '#ababab',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.toDoListService.deleteToDoById(iD);
+        this.dialogReference.close();
+      }
     })
   }
 }

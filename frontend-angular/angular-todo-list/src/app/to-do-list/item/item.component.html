@@ -11,10 +11,16 @@
     </textarea>
   </mat-card-content>
   <hr>
-  <mat-card-content
-    class="footer"
-    (click)="checkBox()"
-  >
-    <mat-checkbox></mat-checkbox>
-  </mat-card-content>
+  <label class="container">
+      <input 
+      type="checkbox" 
+      name="checkBox" 
+      #checkBox 
+      (click) ="checkBoxClicked(checkBox.checked)"
+      [checked]="toDo.isCompleted"
+      >
+      <span class="status" *ngIf="!checkBox.checked"></span>
+      <span class="status" *ngIf="checkBox.checked">Completed</span> 
+      <span class="checkmark"></span>
+  </label>
 </mat-card>

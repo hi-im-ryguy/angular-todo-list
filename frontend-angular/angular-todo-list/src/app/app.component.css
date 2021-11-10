@@ -17,7 +17,7 @@ main {
   justify-content: center;
   height: 6rem;
   width: 100%;
-  background-color: #EEEEEE;
+  background-color: #aca3ca;
 }
 
 .navbar-links {
@@ -32,7 +32,7 @@ main {
   align-items: center;
   justify-content: flex-end;
   height: 6rem;
-  background-color: #EEEEEE;
+  background-color: #aca3ca;
   ;
 }
 
@@ -53,7 +53,7 @@ main {
 }
 
 .footer {
-  background-color: #EEEEEE;
+  background-color: white;
   position: absolute;
   height: 6rem;
   bottom: 0;
