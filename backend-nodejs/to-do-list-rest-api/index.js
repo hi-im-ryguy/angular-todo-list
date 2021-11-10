@@ -2,41 +2,47 @@ const AWS = require('aws-sdk');
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-/**
- * Demonstrates a simple HTTP endpoint using API Gateway. You have full
- * access to the request and response payload, including headers and
- * status code.
- *
- * To scan a DynamoDB table, make a GET request with the TableName as a
- * query string parameter. To put, update, or delete an item, make a POST,
- * PUT, or DELETE request respectively, passing in the payload to the
- * DynamoDB API as a JSON body.
- */
-exports.handler = async (event, context) => {
-    //console.log('Received event:', JSON.stringify(event, null, 2));
-
+exports.handler = async (event, context, callback) => {
     let body;
-    let statusCode = '200';
-    const headers = {
-        'Content-Type': 'application/json',
+    let statusCode = 200;
+    const responseHeaders = {
+        // "Access-Control-Allow-Headers" : "Content-Type",
+        // "Access-Control-Allow-Origin": "https://www.example.com",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT",
+        // 'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
     };
-
+    
     try {
         switch (event.httpMethod) {
-            case 'DELETE':
-                body = await dynamo.delete(JSON.parse(event.body)).promise();
-                break;
+    //         case 'DELETE':
+    //             body = await dynamo.delete(JSON.parse(event.body)).promise();
+    //             break;
             case 'GET':
-                body = await dynamo.scan({ TableName: event.queryStringParameters.TableName }).promise();
+                // event.queryStringParameters.TableName
+                
+                // if (event.path == "/get-to-do-list") { body = event.queryStringParameters.TableName }
+                if (event.path == "/get-to-do-list") {
+                    let id = event.queryStringParameters.id;
+                    body = await getToDoListByID(id);
+                    // body = event;
+                }
+                // body = await dynamo.scan({ TableName: "To_Do_Lists" }).promise();
                 break;
-            case 'POST':
-                body = await dynamo.put(JSON.parse(event.body)).promise();
-                break;
+            // case 'POST':
+            //     break;
             case 'PUT':
-                body = await dynamo.update(JSON.parse(event.body)).promise();
+                if (event.path == "/add-new-to-do") {
+                    body = await addNewToDo(JSON.parse(event.body));
+                }
+                if (event.path == "/update-to-do") {
+                    // body = JSON.parse(event.body);
+                    body = await updateToDo(JSON.parse(event.body));
+                    // body = await dynamo.update(JSON.parse(event.body)).promise();
+                }
                 break;
-            default:
-                throw new Error(`Unsupported method "${event.httpMethod}"`);
+    //         default:
+    //             throw new Error(`Unsupported method "${event.httpMethod}"`);
         }
     } catch (err) {
         statusCode = '400';
@@ -44,10 +50,71 @@ exports.handler = async (event, context) => {
     } finally {
         body = JSON.stringify(body);
     }
-
-    return {
-        statusCode,
-        body,
-        headers,
+    
+    
+    // TODO implement
+    const response = {
+        statusCode: 200,
+        headers: responseHeaders,
+        // body: JSON.stringify(event)
+        body: body,
     };
+    return response;
 };
+
+function getToDoListByID(id) {
+    const params = {
+        TableName: 'To_Do_Lists',
+        // Limit: 1,
+        FilterExpression: 'id = :id',
+        ExpressionAttributeValues: {
+          ':id': Number(id)
+        }
+    };
+    return dynamo.scan(params).promise();
+}
+
+function updateToDo(toDo) {
+    const params = {
+        TableName: 'To_Do_Lists',
+        Key: {
+            "id": toDo.userId
+        },
+        UpdateExpression: "set #to_do_list.#id.#to_do = :to_do, #to_do_list.#id.#is_completed=:is_completed",
+        ExpressionAttributeValues:{
+            ":to_do": toDo.toDo.to_do,
+            ":is_completed": toDo.toDo.is_completed
+        },
+        ExpressionAttributeNames:{
+            '#to_do_list': 'to_do_list',
+            '#id': String(toDo.toDo.to_do_id),
+            '#to_do': 'to_do',
+            '#is_completed': 'is_completed'
+        }
+    }
+    return dynamo.update(params).promise();
+}
+
+function addNewToDo(body) {
+    const params = {
+        TableName: 'To_Do_Lists',
+        Key: {
+            "id": body.id
+        },
+        UpdateExpression: "set #to_do_list.#counter = :newToDo ADD #c :c",
+        ExpressionAttributeValues: {
+            ':newToDo': {
+                'to_do': 'New Task',
+                'is_completed': false
+            },
+            ":c": 1
+        },
+        ExpressionAttributeNames:{
+            '#to_do_list': 'to_do_list',
+            "#c": "to_do_counter",
+            '#counter': String(body.to_do_counter)
+        }
+    }
+    // return body
+    return dynamo.update(params).promise();
+}
