@@ -11,10 +11,9 @@
     </textarea>
   </mat-card-content>
   <hr>
-  <mat-card-content
-    class="footer"
-    (click)="checkBox()"
-  >
-    <mat-checkbox></mat-checkbox>
-  </mat-card-content>
+  <label class="container" (click)="checkBox()">
+      <span id="text">Complete</span> 
+      <input type="checkbox" name="checkBox">
+      <span class="checkmark"></span>
+  </label>
 </mat-card>
