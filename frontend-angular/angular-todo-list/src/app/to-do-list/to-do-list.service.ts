@@ -54,11 +54,15 @@ export class ToDoListService {
   }
   
   deleteToDoById(deletedId: number) {
-    for (let i = 0; i < this.toDoList.length; i++) {
-      if (this.toDoList[i].id == deletedId)
-      {
-        this.toDoList.splice(i,1);
+    this.httpService.deleteToDo(deletedId).subscribe((data: any) => {
+      for (let i = 0; i < this.toDoList.length; i++) {
+        if (this.toDoList[i].id == deletedId)
+        {
+          this.toDoList.splice(i,1);
+        }
       }
-    }
+    }, (error) => {
+      
+    })
   }
 }

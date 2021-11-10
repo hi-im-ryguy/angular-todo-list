@@ -38,7 +38,7 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
     })
   }
 
-  delete(iD: number) {
+  onDelete(iD: number) {
     Swal.fire({
       title: 'Delete this task?',
       icon: 'warning',

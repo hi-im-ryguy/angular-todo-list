@@ -48,11 +48,18 @@ export class HttpService {
 
   public updateToDo(newToDo: ToDo) {
     let toDoDTO = new ToDoDTO(newToDo.id, newToDo.task, newToDo.isCompleted);
-    let number = newToDo.id;
     let requestBody = {
       'toDo': toDoDTO,
       'userId': this.authService.userId
     }
     return this.httpClient.put(this.REST_API_SERVER_URL + '/update-to-do', requestBody, httpHeaders);
+  }
+
+  public deleteToDo(deletedId: number) {
+    let requestBody = {
+      'id': deletedId,
+      'userId': this.authService.userId
+    }
+    return this.httpClient.put(this.REST_API_SERVER_URL + '/delete-to-do', requestBody, httpHeaders);
   }
 }
