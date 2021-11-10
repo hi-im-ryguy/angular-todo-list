@@ -1,6 +1,7 @@
 import { EventEmitter } from "@angular/core";
 import { Injectable } from "@angular/core";
 import { ToDo } from "src/models/ToDo.model";
+import { HttpService } from "../auth/http.service";
 
 @Injectable()
 export class ToDoListService {
@@ -11,9 +12,17 @@ export class ToDoListService {
     toDoList : [],
     toDoListCounter : 0
   }
+
+  constructor(
+    private httpService : HttpService
+  ) {}
+
   onAddNewToDo = new EventEmitter<ToDo>();
 
-  addNewToDo() {
+  addNewToDo(toDoCounter: number) {
+    this.httpService.addNewToDo(toDoCounter).subscribe((data) => {
+      console.log(data);
+    });
     this.toDoList.push(new ToDo(this.toDoListCounter++, 'New Task', false));
   }
 
@@ -23,6 +32,8 @@ export class ToDoListService {
   }
 
   saveToDoById(newToDo: ToDo) {
+    this.httpService.updateToDo(newToDo).subscribe();
+
     for (let i = 0; i < this.toDoList.length; i++) {
       if (this.toDoList[i].id == newToDo.id) this.toDoList[i] = newToDo;
     }

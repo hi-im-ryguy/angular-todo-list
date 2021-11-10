@@ -11,7 +11,7 @@ export class ToDoDTO {
     this.is_completed = isCompleted;
   }
 
-  convertToNative():ToDo {
+  public convertToNative(): ToDo {
     return new ToDo(this.to_do_id, this.to_do, this.is_completed);
   }
 }

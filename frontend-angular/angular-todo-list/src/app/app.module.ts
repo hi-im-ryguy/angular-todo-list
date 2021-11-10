@@ -25,7 +25,9 @@ import { ToDoListAddButtonComponent } from './to-do-list/add-button/add-button.c
 import { ToDoListItemComponent } from './to-do-list/item/item.component';
 import { ToDoListItemConfigurationMenuComponent } from './to-do-list/item-configuration-menu/item-configuration-menu.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpService  } from './auth/http.service';
 import { ToDoListService } from './to-do-list/to-do-list.service';
+import { AuthService } from './auth/auth.service';
 
 const routes: Routes = [
 ];
@@ -59,7 +61,9 @@ const routes: Routes = [
     //   useClass: TokenInterceptor,
     //   multi: true
     // },
-    ToDoListService
+    HttpService,
+    ToDoListService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

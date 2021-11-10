@@ -26,9 +26,10 @@ export class ToDoListItemConfigurationMenuComponent implements OnInit {
 
   }
 
+  // @TODO Fix a security issue here. The id can be modified in the DOM, and passed to the DB.
   onSave(newTask: string, newIsCompleted: boolean) {
     let newToDo = new ToDo(this.passedData.id, newTask, newIsCompleted);
-    this.toDoListService.saveToDoById(newToDo);
+    this.toDoListService.saveToDoById(newToDo)
     this.dialogReference.close();
   }
 }

@@ -23,17 +23,18 @@ export class ToDoListComponent implements OnInit {
     // Get Data with HTTP
     this.httpService.sendGetRequest().subscribe((data: any) => {
       let response = data.Items[0];
-      let toDoDTOList: ToDoDTO[] = response.to_do_list;
+      let toDoDTOList: {} = response.to_do_list;
 
-      console.log(response);
       let nativeToDoList: ToDo[] = [];
       let nativeToDoListCounter: number = response.to_do_counter;
-      // let toDoListCounter = response.
 
-      toDoDTOList.forEach(element => {
+      Object.entries(toDoDTOList).forEach(entry => {
+        const key = Number(entry[0]);
+        const value: any = entry[1];
+
         nativeToDoList.push(
-          new ToDo(element.to_do_id, element.to_do, element.is_completed)
-          //^ Fix this so that you don't have to have a long constructor.
+          new ToDo(key, value.to_do, value.is_completed)
+          // ^ Fix this so that you don't have to have a long constructor.
         )
       });
 
@@ -47,6 +48,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   onAddToDoItem() {
-    this.toDoListService.addNewToDo();
+    this.toDoListService.addNewToDo(this.toDoCounter);
   }
 }
