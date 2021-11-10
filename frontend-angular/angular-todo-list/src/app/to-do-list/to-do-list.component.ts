@@ -3,6 +3,7 @@ import { HttpService } from '../auth/http.service';
 import { ToDoListService } from './to-do-list.service';
 
 import { ToDo } from '../../models/ToDo.model'
+import { ToDoDTO } from 'src/DTOs/ToDo.DTO';
 
 @Component({
   selector: 'app-to-do-list',
@@ -21,13 +22,28 @@ export class ToDoListComponent implements OnInit {
   ngOnInit(): void {
     // Get Data with HTTP
     this.httpService.sendGetRequest().subscribe((data: any) => {
-      console.log(data);
+      let response = data.Items[0];
+      let toDoDTOList: ToDoDTO[] = response.to_do_list;
+
+      console.log(response);
+      let nativeToDoList: ToDo[] = [];
+      let nativeToDoListCounter: number = response.to_do_counter;
+      // let toDoListCounter = response.
+
+      toDoDTOList.forEach(element => {
+        nativeToDoList.push(
+          new ToDo(element.to_do_id, element.to_do, element.is_completed)
+          //^ Fix this so that you don't have to have a long constructor.
+        )
+      });
+
+      // Load To Do's into To Do List
+      this.toDoListService.loadToDoList(nativeToDoList, nativeToDoListCounter);
+
+      this.toDoList = this.toDoListService.toDoList;
+      this.toDoCounter = this.toDoListService.toDoListCounter;
     });
 
-    // Load To Do's into To Do List
-    this.toDoListService.loadToDoList();
-    this.toDoList = this.toDoListService.toDoList;
-    this.toDoCounter = this.toDoListService.toDoListCounter;
   }
 
   onAddToDoItem() {

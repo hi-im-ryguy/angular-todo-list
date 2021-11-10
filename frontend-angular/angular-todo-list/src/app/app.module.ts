@@ -54,11 +54,11 @@ const routes: Routes = [
     MatInputModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // },
     ToDoListService
   ],
   bootstrap: [AppComponent]

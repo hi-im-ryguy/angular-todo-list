@@ -17,9 +17,9 @@ export class ToDoListService {
     this.toDoList.push(new ToDo(this.toDoListCounter++, 'New Task', false));
   }
 
-  loadToDoList() {
-    this.toDoList = this.response.toDoList;
-    this.toDoListCounter = this.response.toDoListCounter;
+  loadToDoList(responseToDo: ToDo[], responseToDoCounter: number) {
+    this.toDoList = responseToDo;
+    this.toDoListCounter = responseToDoCounter;
   }
 
   saveToDoById(newToDo: ToDo) {

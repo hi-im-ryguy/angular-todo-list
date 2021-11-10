@@ -9,6 +9,7 @@ import { ToDoListService } from './to-do-list/to-do-list.service';
 export class AppComponent implements OnInit {
   title = 'angular-todo-list';
   copyRightYear = new Date().getFullYear() + 1;
+  userId: number = 0;
 
   constructor(
   ) {}
